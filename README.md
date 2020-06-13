@@ -15,16 +15,16 @@ npm install --save @hivux/react-material-lib
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from '@hivux/react-material-lib'
+import Gordo from '@hivux/react-material-lib'
 import '@hivux/react-material-lib/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Gordo />
   }
 }
 ```
 
 ## License
 
-MIT © [pedrochaves86](https://github.com/pedrochaves86)
+MIT © [Hivux](https://github.com/Hivux)
