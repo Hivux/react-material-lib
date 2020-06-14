@@ -16,7 +16,6 @@ steps:
     branch:
     - master
 
-steps:
 - name: slack
   image: plugins/slack
   settings:
