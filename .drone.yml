@@ -13,6 +13,5 @@ steps:
   commands:
   - echo publish
   when:
-  branch:
-    include:
+    branch:
     - master
