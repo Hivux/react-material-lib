@@ -21,3 +21,6 @@ steps:
   settings:
     webhook:
       from_secret: slack_webhook
+    channel: builds
+  when:
+    status: [ success, failure ]
