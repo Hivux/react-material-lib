@@ -1,0 +1,18 @@
+kind: pipeline
+name: default
+
+steps:
+- name: test
+  image: node
+  commands:
+  - yarn
+  - yarn test:unit
+
+- name: publish
+  image: node
+  commands:
+  - echo publish
+  when:
+  branch:
+    include:
+    - master
