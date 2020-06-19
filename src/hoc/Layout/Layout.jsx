@@ -62,6 +62,7 @@ export class Layout extends Component {
     return (
       <AuxDiv>
         <TopBar
+          appName='React Material Lib'
           handleSidenavToggle={this.sidenavToggleHandler}
           handleMenu={this.handleMenu}
           handleClose={this.handleClose}
