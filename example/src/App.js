@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Gordo } from '@hivux/react-material-lib'
+import { Button } from '@hivux/react-material-lib'
 import '@hivux/react-material-lib/dist/index.css'
 
 const App = () => {
-  return <Gordo text="Create React Library Example 😄" />
+  return <Button />
 }
 
 export default App
