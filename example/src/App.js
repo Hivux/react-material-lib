@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Gordo } from '@hivux/react-material-lib'
-import Layout from '@hivux/react-material-lib'
+import { Layout } from '@hivux/react-material-lib'
 import '@hivux/react-material-lib/dist/index.css'
 import { Route, Switch } from 'react-router-dom'
 
