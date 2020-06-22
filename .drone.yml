@@ -12,6 +12,7 @@ steps:
 - name: pages
   image: node
   commands:
+  - yarn
   - yarn deploy
   when:
     branch:
@@ -21,6 +22,7 @@ steps:
 - name: publish
   image: node
   commands:
+  - yarn
   - echo publish
   when:
     branch:
