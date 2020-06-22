@@ -1,6 +1,3 @@
-import DraftsIcon from '@material-ui/icons/Drafts';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import SendIcon from '@material-ui/icons/Send';
 import React, { Component } from 'react';
 
 import Sidenav from '../../components/Navigation/Sidenav/Sidenav';
@@ -9,39 +6,11 @@ import AuxDiv from '../AuxDiv/AuxDiv';
 
 export class Layout extends Component {
   state = {
-    showSidenav: false,
-    showToggle: true,
-    anchorEl: null,
-    userMenu: [
-      {
-        label: 'Profile',
-        url: ''
-      },
-      {
-        label: 'My account',
-        url: ''
-      }
-    ],
-    menu: [
-      {
-        label: 'Inbox',
-        icon: InboxIcon
-      },
-      {
-        label: 'Drafts',
-        icon: DraftsIcon,
-        children: [
-          {
-            label: 'Sent asad',
-            icon: SendIcon
-          },
-          {
-            label: 'Sent Items',
-            icon: SendIcon
-          }
-        ]
-      }
-    ]
+    showSidenav: this.props.settings.showSidenav,
+    showToggle: this.props.settings.showToggle,
+    anchorEl: this.props.settings.anchorEl,
+    userMenu: this.props.settings.userMenu,
+    menu: this.props.settings.menu
   }
 
   handleMenu = (event) => {
