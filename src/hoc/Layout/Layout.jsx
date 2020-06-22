@@ -1,11 +1,11 @@
-import DraftsIcon from '@material-ui/icons/Drafts'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import SendIcon from '@material-ui/icons/Send'
-import React, { Component } from 'react'
+import DraftsIcon from '@material-ui/icons/Drafts';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import SendIcon from '@material-ui/icons/Send';
+import React, { Component } from 'react';
 
-import Sidenav from '../../components/Navigation/Sidenav/Sidenav'
-import TopBar from '../../components/Navigation/TopBar/TopBar'
-import AuxDiv from '../AuxDiv/AuxDiv'
+import Sidenav from '../../components/Navigation/Sidenav/Sidenav';
+import TopBar from '../../components/Navigation/TopBar/TopBar';
+import AuxDiv from '../AuxDiv/AuxDiv';
 
 export class Layout extends Component {
   state = {
@@ -58,12 +58,17 @@ export class Layout extends Component {
     })
   }
 
+  sidenavClose = () => {
+    this.setState({ showSidenav: false })
+  }
+
   render() {
     return (
       <AuxDiv>
         <TopBar
           appName='React Material Lib'
           handleSidenavToggle={this.sidenavToggleHandler}
+          handleClickAway={this.sidenavClose}
           handleMenu={this.handleMenu}
           handleClose={this.handleClose}
           anchorEl={this.state.anchorEl}
