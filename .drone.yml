@@ -1,16 +1,29 @@
 kind: pipeline
+type: docker
 name: default
 
 steps:
 - name: test
   image: node
   commands:
-  - yarn
+  - yarn --network-timeout 100000
   - yarn test:unit
+
+- name: pages
+  image: node
+  commands:
+  - yarn --network-timeout 100000
+  - cd example && yarn --network-timeout 100000 && cd ..
+  - yarn deploy
+  when:
+    branch:
+    - master
+    - develop
 
 - name: publish
   image: node
   commands:
+  - yarn --network-timeout 100000
   - echo publish
   when:
     branch:

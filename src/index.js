@@ -1,2 +1,3 @@
-import { Gordo } from './gordo'
-export { Gordo }
+import { Layout } from './hoc/Layout/Layout'
+
+export { Layout }
