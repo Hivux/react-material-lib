@@ -3,15 +3,6 @@ type: docker
 name: default
 
 steps:
-- name: echo
-  image: node
-  environment:
-    NPM_TOKEN:
-      from_secret: NPM_TOKEN
-  commands:
-  - echo $NPM_TOKEN
-  - exit 1
-
 - name: test
   image: node
   commands:
@@ -20,17 +11,23 @@ steps:
 
 - name: pages
   image: node
+  environment:
+    NPM_TOKEN:
+      from_secret: NPM_TOKEN
   commands:
   - echo $${NPM_TOKEN} > .npmrc
   - yarn --network-timeout 100000
   - cd example && yarn --network-timeout 100000 && cd ..
   - yarn deploy
-  when:
-    branch:
-    - master
+  # when:
+  #   branch:
+  #   - master
 
 - name: publish
   image: node
+  environment:
+    NPM_TOKEN:
+      from_secret: NPM_TOKEN
   commands:
   - yarn --network-timeout 100000
   - echo publish
