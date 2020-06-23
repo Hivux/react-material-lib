@@ -26,11 +26,11 @@ const App = () => {
         icon: InboxIcon
       },
       {
-        label: 'Drafts',
+        label: 'Components',
         icon: DraftsIcon,
         children: [
           {
-            label: 'Sent Items',
+            label: 'BreadCrumbs',
             icon: SendIcon
           }
         ]
