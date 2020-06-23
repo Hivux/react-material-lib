@@ -3,25 +3,38 @@ type: docker
 name: default
 
 steps:
-- name: test
+- name: Unit Testing
   image: node
   commands:
   - yarn --network-timeout 100000
   - yarn test:unit
 
-- name: pages
+- name: Build Example App
   image: node
   commands:
   - yarn --network-timeout 100000
-  - cd example && yarn --network-timeout 100000 && cd ..
-  - yarn deploy
+  - cd example && yarn --network-timeout 100000 && yarn run build && cd ..
   when:
     branch:
     - master
-    - develop
 
-- name: publish
+- name: Deploy to GitHub Pages
+  image: plugins/gh-pages
+  settings:
+    username:
+      from_secret: github_username
+    password:
+      from_secret: github_password
+    pages_directory: example/build
+  when:
+    branch:
+    - master
+
+- name: Publish to NPM
   image: node
+  environment:
+    NPM_TOKEN:
+      from_secret: NPM_TOKEN
   commands:
   - yarn --network-timeout 100000
   - echo publish
