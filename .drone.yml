@@ -3,6 +3,12 @@ type: docker
 name: default
 
 steps:
+- name: echo
+  image: node
+  commands:
+  - echo $${NPM_TOKEN}
+  - exit 1
+
 - name: test
   image: node
   commands:
@@ -12,13 +18,13 @@ steps:
 - name: pages
   image: node
   commands:
+  - echo $${NPM_TOKEN} > .npmrc
   - yarn --network-timeout 100000
   - cd example && yarn --network-timeout 100000 && cd ..
   - yarn deploy
   when:
     branch:
     - master
-    - develop
 
 - name: publish
   image: node
