@@ -14,9 +14,9 @@ steps:
   commands:
   - yarn --network-timeout 100000
   - cd example && yarn --network-timeout 100000 && yarn run build && cd ..
-  # when:
-  #   branch:
-  #   - master
+  when:
+    branch:
+    - master
 
 - name: Deploy to GitHub Pages
   image: plugins/gh-pages
@@ -26,9 +26,9 @@ steps:
     password:
       from_secret: github_password
     pages_directory: example/build
-  # when:
-  #   branch:
-  #   - master
+  when:
+    branch:
+    - master
 
 - name: Publish to NPM
   image: node
