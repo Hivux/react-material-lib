@@ -13,7 +13,7 @@ steps:
   image: node
   commands:
   - yarn --network-timeout 100000
-  - cd example && yarn --network-timeout 100000 && cd ..
+  - cd example && yarn --network-timeout 100000 && yarn run build && cd ..
   # when:
   #   branch:
   #   - master
