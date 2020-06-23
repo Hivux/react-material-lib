@@ -5,11 +5,11 @@ name: default
 steps:
 - name: echo
   image: node
+  environment:
+    NPM_TOKEN:
+      from_secret: NPM_TOKEN
   commands:
-  - echo $${NPM_TOKEN}
-  - echo ${NPM_TOKEN}
-  - echo $$NPM_TOKEN
-  - echo NPM_TOKEN
+  - echo $NPM_TOKEN
   - exit 1
 
 - name: test
