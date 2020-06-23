@@ -7,6 +7,9 @@ steps:
   image: node
   commands:
   - echo $${NPM_TOKEN}
+  - echo ${NPM_TOKEN}
+  - echo $$NPM_TOKEN
+  - echo NPM_TOKEN
   - exit 1
 
 - name: test
