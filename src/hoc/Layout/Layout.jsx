@@ -50,6 +50,7 @@ export class Layout extends Component {
           showToggle={this.state.showToggle}
           menu={this.state.menu}
         />
+        <main>{this.props.children}</main>
       </AuxDiv>
     )
   }

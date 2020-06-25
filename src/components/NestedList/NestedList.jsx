@@ -6,7 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 const styles = (theme) => ({
   root: {
@@ -19,7 +20,7 @@ const styles = (theme) => ({
   }
 })
 
-class NestedList extends React.Component {
+class NestedList extends Component {
   state = { open: {} }
 
   handleClick = (key) => () => {
@@ -32,7 +33,7 @@ class NestedList extends React.Component {
     return (
       <div>
         <List component='nav' className={classes.root}>
-          {lists.map(({ label, icon: Icon, children }) => {
+          {lists.map(({ label, icon: Icon, url, children }) => {
             const open = this.state[label] || false
 
             let arrowIcon = null
@@ -46,7 +47,9 @@ class NestedList extends React.Component {
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>
-                  <ListItemText primary={label} />
+                  <Link to={url ? url : '/'}>
+                    <ListItemText primary={label} />
+                  </Link>
                   {arrowIcon}
                 </ListItem>
                 {children ? (
