@@ -43,23 +43,28 @@ class NestedList extends Component {
 
             return (
               <div key={label}>
-                <ListItem button onClick={this.handleClick(label)}>
+                <ListItem
+                  button
+                  to={url}
+                  component={Link}
+                  onClick={this.handleClick(label)}
+                >
                   <ListItemIcon>
                     <Icon />
                   </ListItemIcon>
-                  <Link to={url ? url : '/'}>
-                    <ListItemText primary={label} />
-                  </Link>
+                  <ListItemText primary={label} />
                   {arrowIcon}
                 </ListItem>
                 {children ? (
                   <Collapse in={open} timeout='auto' unmountOnExit>
                     <List component='div' disablePadding>
                       {(children || []).map(
-                        ({ label: childLabel, icon: ChildIcon }) => (
+                        ({ label: childLabel, icon: ChildIcon, url }) => (
                           <ListItem
                             key={childLabel}
                             button
+                            to={url}
+                            component={Link}
                             className={classes.nested}
                           >
                             <ListItemIcon>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 import Sidenav from '../../components/Navigation/Sidenav/Sidenav';
 import TopBar from '../../components/Navigation/TopBar/TopBar';
 import AuxDiv from '../AuxDiv/AuxDiv';
 
-export class Layout extends Component {
+
+class Layout extends Component {
   state = {
     showSidenav: this.props.settings.showSidenav,
     showToggle: this.props.settings.showToggle,
@@ -34,24 +36,31 @@ export class Layout extends Component {
   render() {
     return (
       <AuxDiv>
-        <TopBar
-          appName='React Material Lib'
-          handleSidenavToggle={this.sidenavToggleHandler}
-          handleClickAway={this.sidenavClose}
-          handleMenu={this.handleMenu}
-          handleClose={this.handleClose}
-          anchorEl={this.state.anchorEl}
-          userMenuOptions={this.state.userMenu}
-          showToggle={this.state.showToggle}
-        />
-        <Sidenav
-          handleSidenavToggle={this.sidenavToggleHandler}
-          open={this.state.showSidenav}
-          showToggle={this.state.showToggle}
-          menu={this.state.menu}
-        />
-        <main>{this.props.children}</main>
+          <TopBar
+            appName='React Material Lib'
+            handleSidenavToggle={this.sidenavToggleHandler}
+            handleClickAway={this.sidenavClose}
+            handleMenu={this.handleMenu}
+            handleClose={this.handleClose}
+            anchorEl={this.state.anchorEl}
+            userMenuOptions={this.state.userMenu}
+            showToggle={this.state.showToggle}
+          />
+          <Sidenav
+            handleSidenavToggle={this.sidenavToggleHandler}
+            open={this.state.showSidenav}
+            showToggle={this.state.showToggle}
+            menu={this.state.menu}
+          />
+          <Switch>
+            <Route path='/test' component={Test} />
+            <Route path='/' exact component={Layout} />
+            <Redirect to='/' />
+          </Switch>
+          <main>{this.props.children}</main>
       </AuxDiv>
     )
   }
 }
+
+export withRouter(Layout)

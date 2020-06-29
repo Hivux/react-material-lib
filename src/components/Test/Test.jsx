@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const Test = () => <p>Test component</p>
+export const Test = () => <p style={{ marginTop: '50px' }}>Test component</p>

@@ -1,9 +1,8 @@
-import { Layout, Test } from '@hivux/react-material-lib';
+import { Layout } from '@hivux/react-material-lib';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import SendIcon from '@material-ui/icons/Send';
 import React from 'react';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 const App = () => {
   const settings = {
@@ -24,16 +23,17 @@ const App = () => {
       {
         label: 'Inbox',
         icon: InboxIcon,
-        url: ''
+        url: '/test'
       },
       {
         label: 'Components',
         icon: DraftsIcon,
+        url: '',
         children: [
           {
             label: 'Test',
             icon: SendIcon,
-            url: '/test'
+            url: '/chaves'
           }
         ]
       }
@@ -42,15 +42,9 @@ const App = () => {
 
   return (
     <div>
-      <Layout settings={settings}>
-        <Switch>
-          <Route path='/test' component={Test} />
-          <Route path='/' exact component={Layout} />
-          <Redirect to='/' />
-        </Switch>
-      </Layout>
+      <Layout settings={settings} />
     </div>
   )
 }
 
-export default withRouter(App)
+export default App
